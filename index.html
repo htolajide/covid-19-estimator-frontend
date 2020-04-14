@@ -34,6 +34,8 @@
 			font-family: sanserif;
 			font-size: 32px;
 			font-weight: bold;
+			margin-left: 40px;
+			margin-top: 40px;
 		}
 		.response{
 			width: 100%;
@@ -45,7 +47,7 @@
 			width: 100%;
 			height: 30px;
 			border-radius: 5px;
-			border: 1px solid #000000;
+			border: 1px solid #d0d0d0;
 			marging-top: 15px;
 			margin-bottom: 15px
 		}
@@ -66,12 +68,12 @@
 			border-bottom:2px solid #000000;
 		}
 		.menu{
+			margin-top: 30px;
 			list-style-type: none;
-			margin-right:50px
+			margin-right:30px;
 			float: right;
 		}
 		.menu li{
-			color: #ffffff;
 			display:inline;	
 			margin: 0 20px 0 0;
 		}
@@ -81,18 +83,22 @@
 			marging-top: 20px;
 		}
 		.menu li a{
+			color: #ffffff;
 			text-decoration: none;
 		}
 		.content{
 			padding:15px;
 		}
-		.btn{
+		.button-content{
 			margin: 20px auto;
-			width: 30%;
+			width: 50%;
+		}
+		.btn{
+			width: 100%;
 			height: 40px;
 			border: 1px solid #000000;
 			border-radius: 5px;
-			background-color: #dddddd;	
+			background-color: light-green;	
 		}
 	</style>
   </head>
@@ -104,9 +110,9 @@
 		</div>
 		<div class="right">
 			<ul class="menu">
-				<li><a>Home </a></li>
-				<li><a>About</a></li>
-				<li><a>Contact</a></li>
+				<li><a href="#">Home </a></li>
+				<li><a href="#">About</a></li>
+				<li><a href="#">Contact</a></li>
 			</ul>
 		</div>
 	</nav>
@@ -152,13 +158,14 @@
 						<div class="form">
 							<label for="inputState">Period Type:</label>
 							<select id="inputState" class="form-control" data-period-type="">
-								<option selected>Choose...</option>
-								<option>days</option>
+								<option selected>days</option>
 								<option>weeks</option>
 								<option>months</option>
 							</select>
 						</div>
+						<div class="button-content">
 							<button type="submit" class="btn" data-go-estimate>Submit</button>
+						</div>
 					</form>
 				</div>
 			</div>
@@ -167,5 +174,18 @@
 			</div>
 		</div>
 	</div>
+	
+	<!-- Javascript Code -->
+	<script>
+		const elements = document.querySelectorAll('input');
+		
+		const setValues = () => {
+			for(element in elements){
+				console.log(element);
+				element.value = 2000;
+			}
+		};
+		setValues();
+	</script>
   </body>
 </html>
