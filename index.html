@@ -45,6 +45,7 @@
 			width: 80%;		
 			margin: 20px auto; 
 			position: relative;
+			overflow: auto;
 		}
 		.form-control{
 			width: 100%;
@@ -107,6 +108,7 @@
 		}
 		.btn{
 			width: 100%;
+			background-color: #dddddd;
 			height: 35px;
 			border-radius: 5px;
 			border: 1px solid #d0d0d0;
@@ -118,6 +120,24 @@
 			margin: 0;
 			padding: 0;
 			display: inline;
+		}
+		.success{
+			width: 100%;
+			color: #259604;
+			background-color: #bbff99;
+			border-radius: 5px;
+			border: 1px solid #259604;
+			text-align: center;
+			display: none;
+		}
+		.error{
+			width: 100%;
+			color: #ff0000;
+			background-color: #ffbb99;
+			border-radius: 5px;
+			border: 1px solid #ff0000;
+			text-align: center;
+			display:none;
 		}
 	</style>
   </head>
@@ -141,7 +161,8 @@
 		</p>
 		<div class="content">
 			<h3 class="header">Fill Data</h3>
-			<div class="result"></div>
+			<div class="success">Success</div>
+			<div class="error"></div>
 			<form class="form">
 				<div class="row">
 					<div class="col">
@@ -207,7 +228,6 @@
 		</div>
 		<div class="impact">
 			<h3 class="header">Result</h3>
-			<span class="error"></span>
 			<div class="row">
 				<div class="col">
 					<label for="inputState">Impact</label>
@@ -296,7 +316,7 @@
 		// };
 		const url = "https://estimate-covid19.herokuapp.com/api/v1/on-covid-19/";
 		const btn = document.querySelector('.btn');
-		const result = document.querySelector('.result');
+		const success = document.querySelector('.success');
 		const error = document.querySelector('.error');
 		const setValue = (element, value) => {
 			element.value = value;
@@ -354,11 +374,12 @@
 				setValue(idif, impact.dollarsInFlight);
 				const sdif = document.querySelector('#s-dif');
 				setValue(sdif, severeImpact.dollarsInFlight);
-				result.setAttribute('style', 'background-color: #56efac; color: green; border: 2px solid green; border-radius: 5px');
-				result.textContent = `Request successfull\n`;
+				success.style.display = 'block'
+				success.textContent = `Request successfull\n`;
+				error.style.display = 'none';
 			})
 			.catch(err => {
-				error.setAttribute('style', 'background-color: light-red; color: red; border: 2px solid red');
+				error.style.display = 'block';
 				error.textContent = `Error occured ${err}`;
 			})
 			console.log('button clicked');
