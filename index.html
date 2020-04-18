@@ -59,6 +59,7 @@
 			margin-top: 10px;
 			margin-bottom: 10px;
 			font-size: 18px;
+			padding-left: 5px;
 		}
 		.header{
 			background-color: #dddddd;
@@ -304,7 +305,7 @@
 					<label for="inputState">Loss in dolar:</label>
 					<input type="text" class="form-control" id="s-dif" data-reported-cases="" readonly>
 				</div>
-			</div><hr>
+			</div>
 			
 			
 		</div>
@@ -323,8 +324,14 @@
 		const btn = document.querySelector('.btn');
 		const success = document.querySelector('.success');
 		const error = document.querySelector('.error');
+		
+		const numberFormat = (num) => {
+			let num_parts = num.toString().split(".");
+			num_parts[0] = num_parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+			return num_parts.join(".");
+		};
 		const setValue = (element, value) => {
-			element.value = value;
+			element.value = numberFormat(value);
 		};
 		btn.addEventListener('click', (event) => {
 			event.preventDefault();
